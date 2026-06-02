@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: payment-service
+
+server:
+  port: ${SERVER_PORT:8081}
+
+spring.cloud.aws:
+  region:
+    static: ${AWS_REGION:us-east-1}
+  credentials:
+    access-key: ${AWS_ACCESS_KEY_ID:test}
+    secret-key: ${AWS_SECRET_ACCESS_KEY:test}
+  endpoint: ${AWS_ENDPOINT:}
+  sqs:
+    listener:
+      max-concurrent-messages: 10
+
+app:
+  aws:
+    sns:
+      payment-events-arn: ${PAYMENT_EVENTS_TOPIC_ARN:arn:aws:sns:us-east-1:000000000000:payment-events}
+    sqs:
+      payment-queue: ${PAYMENT_QUEUE:payment-queue}
+    dynamodb:
+      payments-table: ${PAYMENTS_TABLE:payments}
+  payment:
+    auto-approve-limit: ${PAYMENT_AUTO_APPROVE_LIMIT:1000}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: payment-service
+
+logging:
+  level:
+    com.example.eps: INFO
+    io.awspring.cloud: WARN

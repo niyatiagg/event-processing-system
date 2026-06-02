@@ -1,0 +1,50 @@
+# Maven
+target/
+*.jar
+!**/src/main/**/*.jar
+!**/src/test/**/*.jar
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.classpath
+.project
+.settings/
+.factorypath
+
+# Logs
+*.log
+logs/
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+!example.tfvars
+.terraform.lock.hcl
+override.tf
+override.tf.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+
+# LocalStack
+volume/
+localstack-data/
+
+# Local Maven repository (sandbox-only; not part of the project)
+.m2repo/
